@@ -23,7 +23,8 @@ public class ClienteService {
 
     public Cliente salvarCliente(Cliente cliente) {
 
-        return clienteRepository.save(cliente);
+        Cliente clienteSalvo = clienteRepository.save(cliente);
+        return clienteSalvo;
     }
 
     public List<Cliente> listarClientes() {
@@ -39,7 +40,11 @@ public class ClienteService {
     }
 
     public void deletarClientePorId(Long id) {
-        clienteRepository.deleteById(id);
+        try {
+            clienteRepository.deleteById(id);
+        } catch (Exception e) {
+            throw new RuntimeException("Erro ao deletar cliente enviado");
+        }
     }
 
     public Cliente atualizarClientePorId(Long id, Cliente cliente) {
