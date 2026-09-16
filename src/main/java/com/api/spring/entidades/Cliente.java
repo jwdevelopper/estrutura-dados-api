@@ -10,6 +10,12 @@ import org.springframework.util.StringUtils;
 import javax.persistence.*;
 import java.util.Objects;
 
+/*
+    REPRESENTAÇÃO DE NOSSA TABELA DO BANCO DE DADOS
+    OBJETO A SER PERSISTIDO E MANIPULADO ATRAVÉS DE NOSSA CAMADA REPOSITORY
+ */
+
+
 @Entity
 @Getter
 @Setter

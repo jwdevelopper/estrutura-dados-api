@@ -7,7 +7,12 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+/*
+    A ANOTATION @Service IDENTIFICA QUE A CLASSE SE TRATA DE UM SERVICE
+    O SERVICE É RESPONSAVEL POR RECEBER AS REQUISIÇÕES DO CONTROLLER E FAZER A COMUNICAÇÃO COM O REPOSITORY
+    A ANOTACAO TORNA A CLASSE GERENCIAVEL PELO SPRING BOOT O QUE A TORNA POSSIVEL FAZER A INJECAO DELA
+    EM OUTROS CONTEXTOS
+ */
 @Service
 @RequiredArgsConstructor //injeta a dependencia de forma automatica
 public class ClienteService {
@@ -33,6 +38,10 @@ public class ClienteService {
     }
 
     public Cliente buscarClientePorId(Long id) {
+        /*
+       FINDBYID PODE OU NÃO RETORNAR UM OBJETO POIS O ID PODE OU NAO EXISTIR EM NOSSO BANCO DE DADOS
+       CASO O ID NÃO EXISTA, SERA EXECUTADO O ORELSETHROW RESPONSAVEL POR LANCAR O ERRO DE CLIENTE NÃO ENCONTRADO
+        * */
         Cliente cliente = clienteRepository.findById(id).
                 orElseThrow(() ->
                         new RuntimeException("Cliente não encontrado!"));
